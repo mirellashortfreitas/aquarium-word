@@ -257,7 +257,13 @@ button {
 #slide1:checked ~ .carousel-track .item1,
 #slide2:checked ~ .carousel-track .item2,
 #slide3:checked ~ .carousel-track .item3,
-#slide4:checked ~ .carousel-track .item4 {
+#slide4:checked ~ .carousel-track .item4,
+#slide5:checked ~ .carousel-track .item5,
+#slide6:checked ~ .carousel-track .item6,
+#slide7:checked ~ .carousel-track .item7,
+#slide8:checked ~ .carousel-track .item8,
+#slide9:checked ~ .carousel-track .item9,
+#slide10:checked ~ .carousel-track .item10 {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
@@ -306,7 +312,13 @@ button {
 #slide1:checked ~ .carousel-dots label:nth-child(1),
 #slide2:checked ~ .carousel-dots label:nth-child(2),
 #slide3:checked ~ .carousel-dots label:nth-child(3),
-#slide4:checked ~ .carousel-dots label:nth-child(4) {
+#slide4:checked ~ .carousel-dots label:nth-child(4),
+#slide5:checked ~ .carousel-dots label:nth-child(5),
+#slide6:checked ~ .carousel-dots label:nth-child(6),
+#slide7:checked ~ .carousel-dots label:nth-child(7),
+#slide8:checked ~ .carousel-dots label:nth-child(8),
+#slide9:checked ~ .carousel-dots label:nth-child(9),
+#slide10:checked ~ .carousel-dots label:nth-child(10) {
   background: #0ecfd6;
 }
 
