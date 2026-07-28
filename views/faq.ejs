@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aquarium World – FAQ</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+</head>
+<body>
+
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<header>
+    <%- include('partials/header', { subtitulo: 'FAQ' }) %>
+</header>
+
+<div class="opening-times">
+  <strong>Opening Times:</strong> Open every day from 9:00am to 6:00pm. 
+  <span id="live-time" class="live-time"></span>
+</div> 
+
+<div class="main-banner">
+  <img src="/res/imagens/picture1.png" alt="Turtle and fish swimming in the sea">
+</div>
+
+<div class="everything">
+<h1>Frequently Asked Questions</h1>
+</div>
+
+<section id="family">
+
+  <% faqs.forEach(faq => { %>
+    <div class="faq-box" data-faq-id="<%= faq.id %>">
+
+      <% if (faq.image) { %>
+        <img src="<%= faq.image %>" alt="<%= faq.question %>">
+      <% } %>
+
+      <h2><%= faq.question %></h2>
+      <p><%= faq.answer %></p>
+
+      <div class="reactions">
+        <button class="like-btn" aria-label="Like this answer">
+          👍 <span class="likes"><%= reactionsMap[faq.id] ? reactionsMap[faq.id].likes : 0 %></span>
+        </button>
+        <button class="heart-btn" aria-label="Love this answer">
+          ❤️ <span class="hearts"><%= reactionsMap[faq.id] ? reactionsMap[faq.id].hearts : 0 %></span>
+        </button>
+      </div>
+
+    </div>
+  <% }) %>
+
+</section>
+ 
+
+</section>
+
+<%- include('partials/footer') %>
+
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

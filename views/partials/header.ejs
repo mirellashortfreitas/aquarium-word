@@ -1,0 +1,21 @@
+<div>
+  <img src="/res/imagens/peixeazul.png" alt="Aquarium World logo" class="logo"><h1>Aquarium World</h1>
+</div>
+
+<% if (typeof subtitulo !== 'undefined') { %>
+  <h1><%= subtitulo %></h1>
+<% } %>
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/events">Events</a>
+  <a href="/zones">Zones</a>  
+  <a href="/faq">FAQ</a>
+  <a href="/contact">Contact</a>
+
+  <div class="site-search">
+    <button id="search-toggle" type="button" aria-label="Open search">🔍</button>
+    <input type="text" id="site-search-input" class="site-search-input" placeholder="Search the site..." autocomplete="off">
+    <div id="site-search-results" class="site-search-results"></div>
+  </div>
+</nav>

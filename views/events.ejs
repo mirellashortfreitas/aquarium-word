@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aquarium World – Events</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+</head>
+
+<body>
+
+<section>
+
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<header>
+  <%- include('partials/header', { subtitulo: 'Special Events' }) %>
+</header>
+
+<body>
+    
+<div class="opening-times">
+  <strong>Opening Times:</strong> Open every day from 9:00am to 6:00pm.
+  <span id="live-time" class="live-time"></span>
+</div>
+
+<div class="everything">
+  <h1>Special Events</h1>
+  <p>Seasonal festivals, workshops, torchlight tours, and family activity days.</p>
+</div>
+
+<section class="events-grid">
+
+  <% events.forEach(event => { %>
+    <div class="event-card">
+      <% if (event.image) { %>
+        <img src="<%= event.image %>" alt="<%= event.title %>">
+      <% } %>
+      <span class="event-type"><%= event.event_type %></span>
+      <h2><%= event.title %></h2>
+      <p class="event-date">📅 <%= event.event_date %></p>
+      <p><%= event.description %></p>
+    </div>
+  <% }) %>
+
+</section>
+
+
+<%- include('partials/footer') %>
+
+<script src="/scripts/main.js"></script>
+
+</body>
+
+</html>

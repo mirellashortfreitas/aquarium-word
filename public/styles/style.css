@@ -146,9 +146,9 @@ section {
 
 .everything h1 {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 48px;
+  font-size: 3rem;   /*48 divided for 16*/
   color: #ffffff;
-  margin: 0 0 15px;
+  margin: 0 0 ;
   text-shadow: 0 0 12px rgba(14, 207, 214, 0.6),
                0 0 24px rgba(14, 207, 214, 0.3);
 }
@@ -157,6 +157,42 @@ section {
   font-size: 18px;
   color: #4db8e8;
   margin: 0;
+}
+
+.destaque {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.destaque img {
+  flex: 0 0 400px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.destaque1 {
+  flex: 1;
+  text-align: center;
+}
+
+.destaque1 h1 {
+  color: #ffffff;
+}
+
+/*mobile effect*/
+@media (max-width: 700px) {
+  .destaque {
+    flex-direction: column;
+  }
+
+  .destaque img {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
 }
 
 label {
@@ -248,8 +284,8 @@ button {
 .carousel-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
+  object-fit: contain;
+ background-color: #010d1e;
 }
 
 /* show only slides marked */
@@ -538,6 +574,16 @@ html {
 
 }
 
+.faq-box img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;   /* usa a largura toda do box, não fica pequena */
+  float: none;        /* remove o float que está causando o corte */
+  display: block;
+  margin: 0 auto 15px; /* centraliza, com espaço abaixo */
+  border-radius: 12px;
+}
+
 .reactions{
 
     margin-top:20px;
@@ -549,7 +595,7 @@ html {
     font-size:20px;
 
     padding:10px 18px;
-
+6
     margin-right:15px;
 
     border:none;
@@ -558,4 +604,476 @@ html {
 
     cursor:pointer;
 
+}
+
+/*open time*/
+
+.live-time {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #1a2b4c;
+}
+
+/*required fild*/
+.required {
+  color: red;
+}
+
+/*Page event*/
+
+.events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  padding: 20px 50px 50px;
+}
+
+.event-card {
+  background-color: #071624;
+  border: 3px solid orange;
+  border-radius: 20px;
+  padding: 25px;
+  flex: 1 1 280px;
+  max-width: 320px;
+  color: white;
+}
+
+.event-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.event-type {
+  display: inline-block;
+  background-color: #22c55e;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.event-date {
+  color: #ff6f47;
+  font-weight: bold;
+}
+
+/* Site search - header */
+
+.site-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+#search-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #7fdbff;
+  font-size: 1.1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#search-toggle:hover {
+  background: rgba(127, 219, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.site-search-input {
+  width: 0;
+  padding: 0;
+  margin-left: 0;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaf6ff;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+}
+
+.site-search-input.active {
+  width: 220px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  opacity: 1;
+  border: 1px solid rgba(127, 219, 255, 0.4);
+}
+
+.site-search-input::placeholder {
+  color: rgba(234, 246, 255, 0.5);
+}
+
+.site-search-input:focus {
+  outline: none;
+  border-color: #7fdbff;
+  box-shadow: 0 0 8px rgba(127, 219, 255, 0.4);
+}
+
+/* Results dropdown */
+
+.site-search-results {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #0d2436;
+  border: 1px solid rgba(127, 219, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.site-search-results.active {
+  display: block;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.15s ease;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.search-result:hover {
+  background: rgba(127, 219, 255, 0.1);
+}
+
+.search-result-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7fdbff;
+  font-weight: 600;
+}
+
+.search-result-title {
+  color: #eaf6ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.search-result-snippet {
+  color: rgba(234, 246, 255, 0.65);
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.no-results {
+  padding: 1rem;
+  color: rgba(234, 246, 255, 0.6);
+  text-align: center;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+nav a {
+  white-space: nowrap;
+}
+
+/* distinct layout per zone */
+
+/* Coral Reef Zone — featured grid: first photo large, others stacked beside it */
+
+.zone-reef {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  border-bottom: none;
+  padding: 20px;
+  background: #01162e;
+  border-radius: 16px;
+  border: 3px solid orange;
+}
+
+.zone-reef img {
+  max-width: 70%;
+  width: 60%;
+  height: 50%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 12px;
+}
+
+.zone-reef img:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  min-height: 260px;
+}
+
+.zone-reef img:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 120px;
+}
+
+.zone-reef img:nth-of-type(3) {
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 120px;
+}
+
+.zone-reef p {
+  grid-column: 1 / 3;
+  color: #eaf6ff;
+  margin: 10px 0 0;
+}
+
+/* Deep Sea Trench — overlapping stacked cards, dramatic depth effect */
+
+.zone-trench {
+  background: #071624;
+  border-radius: 16px;
+  border: 3px solid orange;
+  padding: 40px 20px 20px;
+  position: relative;
+}
+
+.zone-trench {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.zone-trench img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid #0ecfd6;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+  margin: 0 -25px 0 0;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.zone-trench img:nth-of-type(1) {
+  transform: rotate(-6deg) translateY(10px);
+  z-index: 1;
+}
+
+.zone-trench img:nth-of-type(2) {
+  transform: rotate(2deg) translateY(-10px);
+  z-index: 2;
+}
+
+.zone-trench img:nth-of-type(3) {
+  transform: rotate(8deg) translateY(15px);
+  z-index: 1;
+  margin-right: 0;
+}
+
+.zone-trench img:hover {
+  transform: scale(1.1) rotate(0deg);
+  z-index: 5;
+}
+
+.zone-trench p {
+  flex-basis: 100%;
+  color: #eaf6ff;
+  text-align: center;
+  margin-top: 25px;
+}
+
+/* Coastal Rockpools — porthole-style circular thumbnails */
+
+.zone-rockpool {
+  background: #01162e;
+  border-radius: 16px;
+  border: 3px solid orange;
+  padding: 30px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.zone-rockpool img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0;
+  border: 4px solid #ff6f47;
+  box-shadow: 0 0 16px rgba(255, 111, 71, 0.35);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.zone-rockpool img:hover {
+  transform: scale(1.1);
+  border-color: #0ecfd6;
+}
+
+.zone-rockpool p {
+  flex-basis: 100%;
+  color: #eaf6ff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Freshwater Rivers & Rainforest — two large side-by-side feature photos */
+
+.zone-river {
+  background: #071624;
+  border-radius: 16px;
+  border: 1px solid orange;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.zone-river img {
+  flex: 1 1 260px;
+  max-width: 100%;
+  height: 260px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 12px;
+}
+
+.zone-river p {
+  flex-basis: 100%;
+  color: #eaf6ff;
+  margin-top: 10px;
+}
+
+/* Character Cove — playful polaroid-style grid, alternating tilt and colours */
+
+.zone-family {
+  background: #01162e;
+  border-radius: 16px;
+  border: 3px solid orange;
+  padding: 30px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.zone-family img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 10px;
+  padding: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.zone-family img:nth-of-type(1) { transform: rotate(-5deg); border: 3px solid #ff6f47; }
+.zone-family img:nth-of-type(2) { transform: rotate(4deg); border: 3px solid #0ecfd6; }
+.zone-family img:nth-of-type(3) { transform: rotate(-3deg); border: 3px solid #22c55e; }
+.zone-family img:nth-of-type(4) { transform: rotate(6deg); border: 3px solid #ff6f47; }
+
+.zone-family img:hover {
+  transform: rotate(0deg) scale(1.08);
+}
+
+.zone-family p {
+  flex-basis: 100%;
+  color: #eaf6ff;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/*zone-drawers*/
+
+.zone-drawers {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  gap: 200px; /* space between columns */
+  align-items: flex-start;
+}
+
+.drawer {
+  background: #01162e;
+  border: 3px solid #0ecfd6;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  padding: 0 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.drawer[open] {
+  box-shadow: 0 0 18px rgba(14, 207, 214, 0.35);
+}
+
+.drawer summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 0;
+  color: #eaf6ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.drawer summary::marker {
+  content: "";
+}
+
+.drawer p {
+  color: #4db8e8;
+  line-height: 1.6;
+  padding-bottom: 18px;
+  margin: 0;
+}
+
+.firstblock,
+.Secondblock {
+  flex: 3; /* cada coluna ocupa 100% do espaço */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* espaço entre os drawers dentro da coluna */
+}
+
+.drawer {
+  flex: 1;
 }

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aquarium World – Zone</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+<section>
+
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<header>
+  <%- include('partials/header', { subtitulo: 'Marine Zones' }) %>
+</header>
+
+<body>
+
+<div class="opening-times">
+  <strong>Opening Times:</strong> Open every day from 9:00am to 6:00pm. 
+  <span id="live-time" class="live-time"></span>
+</div> 
+
+<section>
+
+<div class="faq-box">
+
+<h1 class="section-title">Entry to multiple attractions with Aquarium World</h1>
+
+<p id="introduction">Home to over 1000 species across 10 themed zones, there's so much to explore at Aquarium World:</p>
+
+<ul>
+
+<li> Adventure - Journey through icy Arctic and Antarctic landscapes and get up close with our colony of Gentoo Penguins</li>
+<li>Ocean Invaders - Step into an immersive jellyfish experience spanning several unique underwater environments</li>
+<li>Coral Kingdom - Dive into a breathtaking underwater world and discover our thriving living coral reef</li>
+<li>Rockpool Discovery - Uncover what lies beneath the surface of local seas and meet the creatures found closer to home.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section class="zone-drawers">
+
+<div class="firstblock">
+
+<details class="drawer">
+  <summary>Aquarium World</summary>
+<p>Aquarium World is organized into several themed marine zones, each offering visitors a chance to explore different aquatic environments and their inhabitants.</p>
+</details>
+
+<details class="drawer">
+  <summary>Coral Reef Zone</summary>
+  <p>Coral Reef Zone invites guests into a vibrant underwater world built around a living coral reef. Visitors can spot the bright yellow tang, a reef fish known for grazing on algae, alongside clownfish, which live safely among sea anemones thanks to their natural immunity to the anemones' sting. The exhibit also highlights how coral reefs themselves are formed by tiny animals called polyps, and how they support thousands of marine species.</p>
+</details>
+
+<details class="drawer">
+  <summary>Deep Sea Trench</summary>
+  <p>Deep Sea Trench takes visitors on a descent into darker ocean depths, home to jellyfish, creatures that have drifted through the seas for over 500 million years, as well as sharks, including the calm, distinctively spotted leopard shark. This zone emphasizes the ancient origins and ecological importance of these predators.</p>
+</details>
+
+</div>
+
+<div class="Secondblock">
+<details class="drawer">
+  <summary>Coastal Rockpools</summary>
+  <p>Coastal Rockpools offers a hands-on, supervised area where guests can get close to smaller shoreline creatures: crabs, shrimp, sea snails, and hermit crabs, which famously borrow empty shells to live in as they grow. It's a more intimate, local counterpart to the deeper zones.</p>
+</details>
+
+<details class="drawer">
+  <summary>Freshwater Rivers &amp; Rainforest</summary>
+  <p>Freshwater Rivers &amp; Rainforest follows the journey of water from rivers to the sea, introducing long-living sea turtles that return to their birth beaches to nest, and highly intelligent dolphins that rely on echolocation to navigate and hunt.</p>
+</details>
+
+<details class="drawer">
+  <summary>Character Cove</summary>
+  <p>Character Cove, the family-friendly zone, uses more playful, cartoon-style presentations to introduce younger visitors to eels, sea snakes, stingrays, and octopuses, the latter notable for having three hearts and remarkable intelligence among invertebrates.</p>
+</details>
+
+</div>
+
+</section>
+
+<section>
+  <h2>Coral Reef Zone</h2>
+  <div class="zone zone-family">
+    <img src="../res/imagens/picture8.png" alt="Yellow fish" class="foto-galeria"
+         data-desc="This yellow tang is a popular reef fish known for its bright colour and grazing on algae."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture5.png" alt="Clownfish" class="foto-galeria"
+         data-desc="Clownfish live among sea anemones and are immune to their sting, forming a unique partnership."
+        tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture7.png" alt="Coral reef" class="foto-galeria"
+         data-desc="Coral reefs are built by tiny animals called polyps and support thousands of marine species."
+        tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+        <p>Colourful coral reefs filled with clownfish and tropical species. Learn how reefs support ocean life.</p>
+  </div>
+  
+  <h2>Deep Sea Trench</h2>
+  <div class="zone zone-trench">
+    <img src="../res/imagens/picture6.png" alt="Jellyfish" class="foto-galeria"
+         data-desc="Jellyfish have drifted through the oceans for over 500 million years, long before dinosaurs existed."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture13.png" alt="Shark" class="foto-galeria"
+         data-desc="Sharks have existed for over 400 million years and play a key role in balancing ocean ecosystems."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture14.png" alt="Leopard shark" class="foto-galeria"
+         data-desc="Leopard sharks are known for their distinctive dark spots and calm, slow-moving nature."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <p>Descend into the deep ocean and encounter jellyfish, sharks, and mysterious deep-sea creatures.</p>
+  </div>
+
+  <h2>Coastal Rockpools</h2>
+  <div class="zone zone-rockpool">
+    <img src="../res/imagens/picture17.png" alt="Crab" class="foto-galeria"
+         data-desc="Crabs use their strong claws for defence, feeding, and communicating with other crabs."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture18.png" alt="Shrimp" class="foto-galeria"
+         data-desc="Shrimp are important scavengers, helping keep rockpools and reefs clean."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture23.png" alt="Snail" class="foto-galeria"
+         data-desc="Sea snails move slowly along rocks, grazing on algae with a rasping tongue called a radula."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture22.png" alt="Hermit crab" class="foto-galeria"
+         data-desc="Hermit crabs don't grow their own shells — they find empty ones and move in as they grow."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <p>Get close to crabs, shrimp, snails, and hermit crabs in our supervised rockpool area.</p>
+  </div>
+
+  <h2>Freshwater Rivers & Rainforest</h2>
+  <div class="zone zone-trench">
+    <img src="../res/imagens/picture3.png" alt="Turtle" class="foto-galeria"
+         data-desc="Sea turtles can live for over 50 years and often return to the same beach where they hatched to lay their own eggs."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture4.png" alt="Dolphin" class="foto-galeria"
+         data-desc="Dolphins are highly intelligent and use echolocation to navigate and hunt in the water."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <p>Follow the journey from rivers to the ocean, meeting turtles and other species along the way.</p>
+  </div>
+
+  <h2>Character Cove (Family Zone)</h2>
+  <div class="zone zone-family">
+    <img src="../res/imagens/picture16.png" alt="Cartoon eel" class="foto-galeria"
+         data-desc="Eels have a long, snake-like body and can be found in both freshwater and saltwater."
+        tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture19.png" alt="Sea snake" class="foto-galeria"
+         data-desc="Sea snakes are fully adapted to life in the ocean and can hold their breath for hours."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture20.png" alt="Stingray" class="foto-galeria"
+         data-desc="Stingrays glide gracefully along the seabed and are related to sharks."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <img src="../res/imagens/picture11.png" alt="Octopus" class="foto-galeria"
+         data-desc="Octopuses have three hearts and are one of the most intelligent invertebrates on the planet."
+         tabindex="0" role="button" 
+         onclick="openPopup(this.src, this.dataset.desc)"
+         onkeydown="if(event.key==='Enter'||event.key===' '){openPopup(this.src, this.dataset.desc)}">
+
+    <p>A playful zone featuring animated sea characters, perfect for younger visitors and families.</p>
+  </div>
+
+</section>
+
+<div id="popup" class="popup-overlay" onclick="closePopup()">
+  <div class="popup-box" onclick="event.stopPropagation()">
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+    <img id="popup-image" class="popup-content">
+    <p id="popup-description"></p>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>
