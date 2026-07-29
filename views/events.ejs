@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Aquarium World – Events</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="/styles/style.css">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
 </head>
 
@@ -27,20 +27,21 @@
 <header>
   <%- include('partials/header', { subtitulo: 'Special Events' }) %>
 </header>
-
-<body>
-    
+   
 <div class="opening-times">
   <strong>Opening Times:</strong> Open every day from 9:00am to 6:00pm.
   <span id="live-time" class="live-time"></span>
 </div>
 
+</section>
+
 <div class="everything">
   <h1>Special Events</h1>
   <p>Seasonal festivals, workshops, torchlight tours, and family activity days.</p>
+  <input type="text" id="event-search" placeholder="Search events...">
 </div>
 
-<section class="events-grid">
+<section class="events-grid" id="events-list">
 
   <% events.forEach(event => { %>
     <div class="event-card">
@@ -50,6 +51,7 @@
       <span class="event-type"><%= event.event_type %></span>
       <h2><%= event.title %></h2>
       <p class="event-date">📅 <%= event.event_date %></p>
+      <span class="countdown-badge" data-date="<%= event.event_date %>"></span> 
       <p><%= event.description %></p>
     </div>
   <% }) %>

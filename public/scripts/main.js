@@ -289,3 +289,33 @@ async function runSiteSearch(query) {
     console.error('Site search error:', error)
   }
 }
+
+/* Countdown badge nos cards de eventos */
+
+function updateCountdowns() {
+  document.querySelectorAll('.countdown-badge').forEach(badge => {
+    
+    const rawDate = badge.dataset.date.split(/[–-]/)[0].trim()
+    const eventDate = new Date(rawDate)
+
+    if (isNaN(eventDate)) return // data que o JS não consegue interpretar
+
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const diffDays = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24))
+
+    if (diffDays > 1) {
+      badge.textContent = `⏳ ${diffDays} days to go`
+    } else if (diffDays === 1) {
+      badge.textContent = `⏳ 1 day to go`
+    } else if (diffDays === 0) {
+      badge.textContent = `🎉 Happening today!`
+    } else {
+      badge.textContent = `Event ended`
+      badge.classList.add('past')
+    }
+  })
+}
+
+updateCountdowns();
+

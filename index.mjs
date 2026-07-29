@@ -227,6 +227,10 @@ app.get('/server-time', (req, res) => {
   })
 })
 
+app.use((req, res) => {          
+  res.status(404).send('Page not found')
+})
+
 /*localhost*/
 
 app.listen(port, () => {
