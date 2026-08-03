@@ -1024,9 +1024,9 @@ nav a {
 .drawer {
   background: #01162e;
   border: 3px solid #0ecfd6;
-  border-radius: 12px;
+  border-radius: 20px;
   margin-bottom: 14px;
-  padding: 0 20px;
+  padding: 0 30px 30px;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
   display: flex;
@@ -1042,12 +1042,13 @@ nav a {
   list-style: none;
   cursor: pointer;
   padding: 16px 0;
-  color: #eaf6ff;
+  color: #0ecfd6;
   font-weight: bold;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 8px;
 }
 
 .drawer summary::-webkit-details-marker {
@@ -1056,6 +1057,16 @@ nav a {
 
 .drawer summary::marker {
   content: "";
+}
+
+.drawer summary::before {
+  content: "▶";
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.drawer[open] summary::before {
+  transform: rotate(90deg);
 }
 
 .drawer p {
@@ -1067,10 +1078,18 @@ nav a {
 
 .firstblock,
 .Secondblock {
-  flex: 3; /* cada coluna ocupa 100% do espaço */
+  flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* espaço entre os drawers dentro da coluna */
+  gap: 12px;
+}
+
+.firstblock,
+.Secondblock {
+  flex: 3; 
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
 }
 
 .drawer {
@@ -1079,7 +1098,6 @@ nav a {
 
 /* burguer menu */
 
-/* Hamburger — escondido por padrão, só aparece no mobile */
 .nav-toggle {
   display: none;
 }
@@ -1149,7 +1167,7 @@ nav a {
   transform: scale(1.08);
 }
 
-/*countdowm card events*/
+/*countdown card events*/
 
 .countdown-badge {
   display: inline-block;
@@ -1165,8 +1183,44 @@ nav a {
 .countdown-badge.past {
   background-color: #4b5563;
   color: white;
+
+}
+  
+  /*accessibility page */
+
+  .acessibilidade-flex {
+  display: flex;
+  align-items: flex-start;   
+  gap: 40px;
+  padding-left: 400px;        
+  padding-right: 40px;
+  flex-wrap: wrap;           
 }
 
+.acessibilidade-flex img {
+  width: 400x;
+  height: 400px;
+  max-width: 400px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
 
- 
+.acessibilidade-flex .zone-drawers {
+  flex: 1;
+  margin: 0;                 
+}
 
+.acessibilidade-flex2 {
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.acessibilidade-flex2 img {
+  width: 100%;
+  max-width: 700px;  
+  height: auto;
+  border-radius: 16px;
+}

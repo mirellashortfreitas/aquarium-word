@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aquarium World – Accessibility</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+</head>
+
+<body>
+
+<div class="bubbles">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<header>
+  <%- include('partials/header', { subtitulo: 'Accessibility' }) %>
+</header>
+
+<div class="opening-times">
+  <strong>Opening Times:</strong> Open every day from 9:00am to 6:00pm.
+  <span id="live-time" class="live-time"></span>
+</div>
+
+<div class="everything">
+  <h1>Accessibility at Aquarium World</h1>
+  <p>We're committed to making your visit enjoyable for everyone.</p>
+</div>
+
+<section id="about">
+  <div class="info-box">
+    <h2>Our Commitment</h2>
+    <p>At Aquarium World, everyone is welcome. We strive to provide an inclusive environment for guests with visible and non-visible disabilities, including autism, sensory sensitivities, mobility impairments, hearing and vision loss, and other accessibility needs. Our facilities are fully wheelchair accessible, assistance animals are welcome, and our friendly team is always available to offer support so every visitor can enjoy an unforgettable experience.</p>
+  </div>
+</section>
+
+<div class="everything">
+  <h3>Accessibility Details</h3>
+</div>
+
+<div class="acessibilidade-flex">
+  <img src="/res/imagens/wheelchairgirl.png" alt="Menina em cadeira de rodas acenando">
+
+  <section class="zone-drawers">
+    <div class="firstblock">
+
+      <details class="drawer">
+        <summary>Mobility</summary>
+        <p>Wheelchairs and mobility scooters available on request. All main pathways are step-free.</p>
+      </details>
+
+      <details class="drawer">
+        <summary>Visual</summary>
+        <p>Guided touch experiences available at the Touch Pool with staff assistance.</p>
+      </details>
+
+    </div>
+
+    <div class="Secondblock">
+
+      <details class="drawer">
+        <summary>Hearing</summary>
+        <p>Captioned videos available at exhibit screens throughout the aquarium.</p>
+      </details>
+
+      <details class="drawer">
+        <summary>Assistance Animals</summary>
+        <p>Assistance animals are welcome throughout the aquarium.</p>
+      </details>
+
+    </div>
+  </section>
+</div>
+
+<div class="acessibilidade-flex2">
+  <img src="/res/imagens/groupaccessibility.png" alt="Group of people with different accessibility needs, including a person in a wheelchair, a person with a cane, and a person with a hearing aid">
+</div>
+
+<%- include('partials/footer') %>
+
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

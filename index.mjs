@@ -3,6 +3,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import validator from 'validator'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -10,7 +11,7 @@ const __dirname = dirname(__filename)
 const app = express()
 const port = 5000
 
-//EJS - View engine
+/*EJS - View engine*/
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -30,6 +31,10 @@ app.get('/', (req, res) => {
 
 app.get('/zones', (req, res) => {
     res.render('zones')
+})
+
+app.get('/accessibility', (req, res) => {
+    res.render('accessibility')
 })
 
 app.get('/faq', (req, res) => {
@@ -60,9 +65,22 @@ app.get('/contact', (req, res) => {
 })
 
 app.post('/contact', (req, res) => {
-  const { name, email, subject, message } = req.body
+  let { name, email, subject, message } = req.body
 
   if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields' })
+  }
+
+  name = validator.trim(name).slice(0, 100)
+  email = validator.trim(email).slice(0, 150)
+  subject = subject ? validator.trim(subject).slice(0, 150) : ''
+  message = validator.trim(message).slice(0, 2000)
+
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ error: 'Please enter a valid email address' })
+  }
+
+  if (name === '' || message === '') {
     return res.status(400).json({ error: 'Missing required fields' })
   }
 
@@ -84,6 +102,7 @@ app.post('/contact', (req, res) => {
 const SITE_PAGES = [
   { title: 'Home', description: 'Welcome to Aquarium World, explore our marine zones and exhibits.', url: '/' },
   { title: 'Zones', description: 'Discover our themed zones, from coral reefs to the deep sea.', url: '/zones' },
+  { title: 'Accessibility', description: 'Everything about wheelchair access, mobility aids and assistance at Aquarium World.', url: '/accessibility' },
   { title: 'Events', description: 'Workshops, tours, talks and festivals happening at the aquarium.', url: '/events' },
   { title: 'FAQ', description: 'Answers to common questions about visiting Aquarium World.', url: '/faq' },
   { title: 'Contact', description: 'Get in touch with the Aquarium World team.', url: '/contact' }
