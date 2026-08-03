@@ -4,6 +4,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import validator from 'validator'
+import morgan from 'morgan'
+import helmet from 'helmet'
+import rateLimit from 'express-rate-limit'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -18,9 +21,25 @@ app.set('views', path.join(__dirname, 'views'))
 
 // Middlewares
 
+app.use(morgan('dev'))
+app.use(helmet())
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+// Rate limiters (anti-spam)
+
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5,                    // 5 submissions per IP in that window
+  message: { error: 'Too many messages sent. Please try again later.' }
+})
+
+const reactionsLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30,             // 30 like/heart clicks per IP per minute
+  message: { error: 'Too many requests. Please slow down.' }
+})
 
 
 /*App gets - page routes*/
@@ -64,7 +83,7 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-app.post('/contact', (req, res) => {
+app.post('/contact', contactLimiter, (req, res) => {
   let { name, email, subject, message } = req.body
 
   if (!name || !email || !message) {
@@ -201,7 +220,7 @@ app.get('/api/search', (req, res) => {
 
 /* route to save a like or heart click */
 
-app.post('/reactions', (req, res) => {
+app.post('/reactions', reactionsLimiter, (req, res) => {
   const { faqId, type } = req.body
   const COLUMN_MAP = { like: 'likes', heart: 'hearts' }
   const column = COLUMN_MAP[type]
@@ -248,6 +267,12 @@ app.get('/server-time', (req, res) => {
 
 app.use((req, res) => {          
   res.status(404).send('Page not found')
+})
+
+// Centralized error handler (catches anything unexpected that reaches here)
+app.use((err, req, res, next) => {
+  console.error(err)
+  res.status(500).json({ error: 'Something went wrong on our end.' })
 })
 
 /*localhost*/
