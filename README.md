@@ -89,9 +89,13 @@ aquarium-world/
 │   ├── accessibility.ejs
 │   └── contact.ejs
 │
-└── public/                 # Static assets served to the client
-    ├── main.js
-    └── style.css
+└── public/
+├── favicon/
+├── res/
+├── scripts/
+│   └── main.js       
+└── styles/
+    └── style.css      
 
 ## Installation
 
@@ -123,9 +127,15 @@ No environment variables are required to run this project locally. The SQLite da
 
 Start the server:
 
-```bash
+\```bash
+node index.mjs
+\```
+
+Or, using the npm script:
+
+\```bash
 npm start
-```
+\```
 
 Or run in development mode with auto-reload (via nodemon):
 
