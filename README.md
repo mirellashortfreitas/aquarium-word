@@ -145,23 +145,22 @@ No automated tests are currently implemented (see Future Improvements).
 
 ## Future Improvements
 
-- **Admin dashboard** — a protected area to manage FAQs, events, and view contact submissions (the `status` field in `contacts` already exists but has no UI to update it)
-- **Authentication** — add login/session handling for admin access
-- **Email notifications** — send a confirmation email to users after contact form submission, and notify staff of new messages
-- **Dark mode**
-- **Full-text search** — replace basic `LIKE`-style search with SQLite FTS5 for faster, more relevant event/site search
-- **Pagination / infinite scroll** — for events and FAQ pages as content grows
-- **Image upload support** — allow admins to upload event/FAQ images instead of hardcoding static paths
-- **Input sanitization audit** — expand `validator` usage across all form endpoints, not just contact
-- **Testing** — add unit/integration tests (currently `npm test` is a placeholder)
-- **Database layer upgrade** — migrate from raw `sqlite3` callbacks to `better-sqlite3` or an ORM (e.g. Prisma) for cleaner async/await code
-- **Environment configuration** — introduce a `.env` file for configurable values (e.g. port, allowed origins)
-- **Caching** — cache static data like FAQs/events to reduce DB reads
-- **Accessibility enhancements** — expand on `accessibility.ejs` with ARIA live regions for dynamic content (search results, reaction counts, countdown badges)
-- **Internationalization (i18n)** — support multiple languages
-- **Docker support** — containerize the app for easier deployment
-- **CI/CD pipeline** — automated linting/testing on push
-- **Mobile responsiveness audit** — ensure all AJAX-driven features work smoothly on smaller screens
+- Admin dashboard — a protected area to manage FAQs, events, and view contact submissions (the `status` field in `contacts` already exists but has no UI to update it)
+- Authentication — add login/session handling for admin access
+- Email notifications — send a confirmation email to users after contact form submission, and notify staff of new messages
+- Full-text search — replace basic `LIKE`-style search with SQLite FTS5 for faster, more relevant event/site search
+- Pagination / infinite scroll — for events and FAQ pages as content grows
+- Image upload support — allow admins to upload event/FAQ images instead of hardcoding static paths
+- Input sanitization audit — expand `validator` usage across all form endpoints, not just contact
+- Testing — add unit/integration tests (currently `npm test` is a placeholder)
+- Database layer upgrade — migrate from raw `sqlite3` callbacks to `better-sqlite3` or an ORM (e.g. Prisma) for cleaner async/await code
+- Environment configuration — introduce a `.env` file for configurable values (e.g. port, allowed origins)
+- Caching — cache static data like FAQs/events to reduce DB reads
+- Accessibility enhancements — expand on `accessibility.ejs` with ARIA live regions for dynamic content (search results, reaction counts, countdown badges)
+- Internationalization — support multiple languages
+- Docker support — containerize the app for easier deployment
+- CI/CD pipeline — automated linting/testing on push
+- Mobile responsiveness audit — ensure all AJAX-driven features work smoothly on smaller screens
 
 ## Contributing
 
