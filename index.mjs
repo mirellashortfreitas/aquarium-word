@@ -14,7 +14,7 @@ const __dirname = dirname(__filename)
 const app = express()
 const port = 5000
 
-/*EJS - View engine*/
+/* EJS - View engine */
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -41,8 +41,34 @@ const reactionsLimiter = rateLimit({
   message: { error: 'Too many requests. Please slow down.' }
 })
 
+const ALLOWED_ORIGINS = [
+  'http://localhost:5000',
+  'https://aquariumworld.example.com'
+]
 
-/*App gets - page routes*/
+function verifyOrigin(req, res, next) {
+  const origin = req.headers.origin
+
+  
+  if (!origin) {
+    // fallback: some clients only send Referer instead of Origin
+    const referer = req.headers.referer
+    const refererOrigin = referer ? new URL(referer).origin : null
+
+    if (!refererOrigin || !ALLOWED_ORIGINS.includes(refererOrigin)) {
+      return res.status(403).json({ error: 'Request blocked (invalid origin).' })
+    }
+    return next()
+  }
+
+  if (!ALLOWED_ORIGINS.includes(origin)) {
+    return res.status(403).json({ error: 'Request blocked (invalid origin).' })
+  }
+
+  next()
+}
+
+/* Page routes (GET) */
 
 app.get('/', (req, res) => {
     res.render('index')
@@ -83,7 +109,7 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-app.post('/contact', contactLimiter, (req, res) => {
+app.post('/contact', verifyOrigin, contactLimiter, (req, res) => {
   let { name, email, subject, message } = req.body
 
   if (!name || !email || !message) {
@@ -127,7 +153,7 @@ const SITE_PAGES = [
   { title: 'Contact', description: 'Get in touch with the Aquarium World team.', url: '/contact' }
 ]
 
-/* route to load all saved reaction counts when the FAQ page opens */
+/* Route to load all saved reaction counts when the FAQ page opens */
 
 app.get('/reactions', (req, res) => {
   db.all(`SELECT faq_id, likes, hearts FROM reactions`, [], (err, rows) => {
@@ -139,7 +165,7 @@ app.get('/reactions', (req, res) => {
   })
 })
 
-/*Route to add get events */
+/* Route to get events */
 
 app.get('/events', (req, res) => {
   db.all(`SELECT * FROM events ORDER BY id ASC`, [], (err, rows) => {
@@ -152,7 +178,7 @@ app.get('/events', (req, res) => {
 })
 
 
-/* Route event AJAX*/
+/* Route for event AJAX search */
 
 app.get('/api/events/search', (req, res) => {
   const query = req.query.q || ''
@@ -170,7 +196,7 @@ app.get('/api/events/search', (req, res) => {
   )
 })
 
-/* Global Search - Pages, FAQ (database) and events */
+/* Global search - pages, FAQ (database) and events */
 
 app.get('/api/search', (req, res) => {
   const q = (req.query.q || '').trim().toLowerCase()
@@ -186,7 +212,7 @@ app.get('/api/search', (req, res) => {
     }
   })
 
-  // 2. FAQ questions (now coming from the database)
+  // 2. FAQ questions (coming from the database)
   db.all(
     `SELECT id, question, answer FROM faqs WHERE question LIKE ? OR answer LIKE ? ORDER BY id ASC`,
     [`%${q}%`, `%${q}%`],
@@ -218,9 +244,9 @@ app.get('/api/search', (req, res) => {
   )
 })
 
-/* route to save a like or heart click */
+/* Route to save a like or heart click */
 
-app.post('/reactions', reactionsLimiter, (req, res) => {
+app.post('/reactions', verifyOrigin, reactionsLimiter, (req, res) => {
   const { faqId, type } = req.body
   const COLUMN_MAP = { like: 'likes', heart: 'hearts' }
   const column = COLUMN_MAP[type]
@@ -253,7 +279,7 @@ app.post('/reactions', reactionsLimiter, (req, res) => {
   })
 })
 
-/*On live clock*/
+/* Live clock endpoint */
 
 app.get('/server-time', (req, res) => {
   db.get(`SELECT datetime('now', 'localtime') AS time`, [], (err, row) => {
@@ -275,7 +301,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong on our end.' })
 })
 
-/*localhost*/
+/* Start server */
 
 app.listen(port, () => {
      console.log(`Server running at http://localhost:5000`)
