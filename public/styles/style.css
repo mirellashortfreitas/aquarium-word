@@ -24,8 +24,10 @@ header {
 }
 
 nav {
-  display: flexbox;
-  gap: 20px;   spacing between links
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
 }
 
 nav a {
@@ -180,6 +182,18 @@ section {
 
 .destaque1 h1 {
   color: #ffffff;
+}
+
+/*tablet*/
+@media (max-width: 1024px) {
+  .carousel {
+    max-width: 600px;
+    height: 300px;
+  }
+
+  .acessibilidade-flex {
+    padding-left: 40px;
+  }
 }
 
 /*mobile effect*/
@@ -792,18 +806,6 @@ html {
   margin: 0;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
-}
-
-nav a {
-  white-space: nowrap;
-}
-
-/* distinct layout per zone */
 
 /* Coral Reef Zone — featured grid: first photo large, others stacked beside it */
 
@@ -1017,8 +1019,9 @@ nav a {
   max-width: 700px;
   margin: 0 auto;
   display: flex;
-  gap: 200px; /* space between columns */
+  gap: 40px;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .drawer {
@@ -1138,13 +1141,22 @@ nav a {
     margin-right: 0;
   }
 
-  .site-search {
+   .site-search {
     margin-left: 0;
     margin-top: 10px;
   }
 
   .site-search-input.active {
     width: 160px;
+  }
+
+  .acessibilidade-flex {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .carousel {
+    height: 220px;
   }
 }
 
@@ -1198,7 +1210,7 @@ nav a {
 }
 
 .acessibilidade-flex img {
-  width: 800x;
+  width: 800px;
   height: 1000px;
   max-width: 600px;
   border-radius: 20px;
