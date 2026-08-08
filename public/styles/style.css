@@ -369,6 +369,28 @@ button {
   background: #0ecfd6;
 }
 
+/*back to top*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #006699;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 100;
+  transition: background 0.3s;
+}
+
+.back-to-top:hover {
+  background: #004d73;
+}
+
+/* faz a rolagem até o topo ser suave em vez de instantânea */
 html {
   scroll-behavior: smooth;
 }
@@ -1245,12 +1267,12 @@ nav a {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  background: green;
+  background: #fff;
   cursor: pointer;
 }
 
 .event-actions button:hover {
-  background: orange;
+  background: #f0f0f0;
 }
 
 /* Print only the single event card the user clicked "Print" on */
@@ -1291,7 +1313,7 @@ nav a {
 }
 
 .ticket-float-btn:hover {
-  background: yellowgreen;
+  background: #e85a34;
 }
 
 .ticket-popup-box {
@@ -1330,4 +1352,22 @@ nav a {
   color: #ff6f47;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* Event past/upcoming filter dropdown */
+#event-filter {
+  margin-left: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* No-events filter message */
+.no-events-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  color: #b8c8dc;
 }

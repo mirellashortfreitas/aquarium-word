@@ -39,6 +39,11 @@
   <h2>Special Events</h2>
   <p>Seasonal festivals, workshops, torchlight tours, and family activity days.</p>
   <input type="text" id="event-search" placeholder="Search events...">
+  <select id="event-filter">
+    <option value="all">All events</option>
+    <option value="upcoming">Upcoming</option>
+    <option value="past">Past</option>
+  </select>
 </div>
 
 <section class="events-grid" id="events-list">
@@ -61,6 +66,8 @@
   <% }) %>
 
 </section>
+
+<p id="no-events-message" class="no-events-message" style="display: none;"></p>
 
 
 <%- include('partials/footer') %>

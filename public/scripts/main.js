@@ -327,13 +327,27 @@ async function runSiteSearch(query) {
 
 /* Countdown badge*/
 
+/* Shared date parser: handles both single dates ("September 12, 2026")
+   and ranges ("October 25–31, 2026"). Splitting on the dash alone drops
+   the year for ranges, since the dash sits between day-start and day-end,
+   not between the date and the year — so we re-attach the year if it's missing. */
+function parseEventDate(dateAttr) {
+  const yearMatch = dateAttr.match(/\d{4}/)
+  const year = yearMatch ? yearMatch[0] : null
+
+  const startPart = dateAttr.split(/[–-]/)[0].trim()
+  const rawDate = (year && !startPart.includes(year)) ? `${startPart}, ${year}` : startPart
+
+  const eventDate = new Date(rawDate)
+  return isNaN(eventDate) ? null : eventDate
+}
+
 function updateCountdowns() {
   document.querySelectorAll('.countdown-badge').forEach(badge => {
-    
-    const rawDate = badge.dataset.date.split(/[–-]/)[0].trim()
-    const eventDate = new Date(rawDate)
 
-    if (isNaN(eventDate)) return // data que o JS não consegue interpretar
+    const eventDate = parseEventDate(badge.dataset.date)
+
+    if (!eventDate) return // data que o JS não consegue interpretar
 
     const today = new Date()
     today.setHours(0, 0, 0, 0)
@@ -354,6 +368,67 @@ function updateCountdowns() {
 
 
 updateCountdowns();
+
+/* Event past/upcoming filter (dropdown) */
+
+const eventFilter = document.getElementById('event-filter')
+
+function getEventStatus(dateAttr) {
+  // reuses the same shared parser as updateCountdowns() — see parseEventDate() above
+  const eventDate = parseEventDate(dateAttr)
+
+  if (!eventDate) return null // data que o JS não consegue interpretar
+
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const diffDays = Math.ceil((eventDate - today) / (1000 * 60 * 60 * 24))
+
+  return diffDays < 0 ? 'past' : 'upcoming'
+}
+
+function applyEventFilter() {
+  if (!eventFilter) return
+  const filterValue = eventFilter.value
+  let visibleCount = 0
+
+  document.querySelectorAll('#events-list .event-card').forEach(card => {
+    const badge = card.querySelector('.countdown-badge')
+
+    if (!badge) {
+      // card has no date info (e.g. came from a search result) — always show it
+      card.style.display = ''
+      visibleCount++
+      return
+    }
+
+    const status = getEventStatus(badge.dataset.date)
+
+    if (filterValue === 'all' || status === null || status === filterValue) {
+      card.style.display = ''
+      visibleCount++
+    } else {
+      card.style.display = 'none'
+    }
+  })
+
+  const noEventsMessage = document.getElementById('no-events-message')
+  if (!noEventsMessage) return
+
+  if (visibleCount === 0) {
+    const labels = { past: 'past', upcoming: 'upcoming' }
+    noEventsMessage.textContent = filterValue === 'all'
+      ? 'No events found.'
+      : `No ${labels[filterValue]} events at the moment.`
+    noEventsMessage.style.display = 'block'
+  } else {
+    noEventsMessage.style.display = 'none'
+  }
+}
+
+if (eventFilter) {
+  eventFilter.addEventListener('change', applyEventFilter)
+  applyEventFilter()
+}
 
 /* Event card share & print buttons */
 
