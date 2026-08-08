@@ -369,28 +369,6 @@ button {
   background: #0ecfd6;
 }
 
-/*back to top*/
-
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #006699;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 100;
-  transition: background 0.3s;
-}
-
-.back-to-top:hover {
-  background: #004d73;
-}
-
-/* faz a rolagem até o topo ser suave em vez de instantânea */
 html {
   scroll-behavior: smooth;
 }
@@ -1265,7 +1243,7 @@ nav a {
 .event-actions button {
   font-size: 13px;
   padding: 6px 12px;
-  border: 1px solid green;
+  border: 1px solid #ccc;
   border-radius: 6px;
   background: green;
   cursor: pointer;
@@ -1293,4 +1271,63 @@ nav a {
   .event-actions {
     display: none;
   }
+}
+
+/* Floating "Buy Tickets" button + popup */
+.ticket-float-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  background: #ff6f47;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-float-btn:hover {
+  background: yellowgreen;
+}
+
+.ticket-popup-box {
+  max-width: 420px;
+  width: 90%;
+  text-align: left;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.ticket-event-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.ticket-event-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ticket-event-list .ticket-event-title {
+  display: block;
+  font-weight: bold;
+}
+
+.ticket-event-list .ticket-event-date {
+  display: block;
+  font-size: 13px;
+  color: #b8c8dc;
+}
+
+.ticket-view-all {
+  display: inline-block;
+  margin-top: 8px;
+  color: #ff6f47;
+  font-weight: bold;
+  text-decoration: none;
 }

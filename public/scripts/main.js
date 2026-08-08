@@ -398,3 +398,62 @@ window.addEventListener("afterprint", () => {
   document.querySelectorAll(".print-only").forEach(el => el.classList.remove("print-only"));
 });
 
+/* Floating "Buy Tickets" button + upcoming events popup */
+
+const ticketFloatBtn = document.getElementById("ticket-float-btn");
+const ticketPopup = document.getElementById("ticket-popup");
+const ticketPopupClose = document.getElementById("ticket-popup-close");
+const ticketEventList = document.getElementById("ticket-event-list");
+
+function openTicketPopup() {
+  ticketPopup.style.display = "flex";
+  loadTicketEvents();
+}
+
+function closeTicketPopup() {
+  ticketPopup.style.display = "none";
+}
+
+if (ticketFloatBtn && ticketPopup) {
+  ticketFloatBtn.addEventListener("click", openTicketPopup);
+
+  ticketPopup.addEventListener("click", closeTicketPopup);
+
+  const ticketPopupBox = ticketPopup.querySelector(".popup-box");
+  if (ticketPopupBox) {
+    ticketPopupBox.addEventListener("click", (event) => event.stopPropagation());
+  }
+
+  if (ticketPopupClose) {
+    ticketPopupClose.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeTicketPopup();
+    });
+  }
+}
+
+async function loadTicketEvents() {
+  if (!ticketEventList) return;
+  ticketEventList.innerHTML = "<li>Loading events...</li>";
+
+  try {
+    const response = await fetch("/api/events/search?q=");
+    const events = await response.json();
+
+    if (events.length === 0) {
+      ticketEventList.innerHTML = "<li>No events currently scheduled.</li>";
+      return;
+    }
+
+    ticketEventList.innerHTML = events.map(ev => `
+      <li>
+        <span class="ticket-event-title">${ev.title}</span>
+        <span class="ticket-event-date">${ev.event_date}</span>
+      </li>
+    `).join("");
+  } catch (error) {
+    console.error("Failed to load events for ticket popup:", error);
+    ticketEventList.innerHTML = "<li>Could not load events. Please try again.</li>";
+  }
+}
+
