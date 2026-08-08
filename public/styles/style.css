@@ -16,6 +16,13 @@ header img.logo {
   margin-right: 10px;
 }
 
+header .site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #006699;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -88,6 +95,10 @@ section {
   padding: 20px;
 }
 
+.carousel-wrapper {
+  padding: 20px;
+}
+
 .zone {
   margin-bottom: 20px;
   border-bottom: 1px solid #dddddd;
@@ -143,7 +154,8 @@ section {
   padding: 60px 20px 50px;
 }
 
-.everything h1 {
+.everything h1,
+.everything h2 {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 3rem;   /*48 divided for 16*/
   color: #ffffff;
@@ -464,7 +476,7 @@ html {
   flex: 1 1 200px;
 }
 
-.footer-col h3 {
+.footer-col h2 {
   color: #ffffff;
   margin-bottom: 5px;
   font-size: 16px;
@@ -492,7 +504,7 @@ html {
   height: 32px;
 }
 
-.footer-brand h3 {
+.footer-brand h2 {
   margin: 0;
 }
 
