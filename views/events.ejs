@@ -53,6 +53,10 @@
       <p class="event-date">📅 <%= event.event_date %></p>
       <span class="countdown-badge" data-date="<%= event.event_date %>"></span> 
       <p><%= event.description %></p>
+      <div class="event-actions">
+        <button type="button" class="btn-share" data-title="<%= event.title %>">Share</button>
+        <button type="button" class="btn-print">Print</button>
+      </div>
     </div>
   <% }) %>
 

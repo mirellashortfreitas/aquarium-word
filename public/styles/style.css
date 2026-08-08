@@ -1255,3 +1255,42 @@ nav a {
     max-width: 100%;
   }
 }
+/* Event card share & print buttons */
+.event-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.event-actions button {
+  font-size: 13px;
+  padding: 6px 12px;
+  border: 1px solid green;
+  border-radius: 6px;
+  background: green;
+  cursor: pointer;
+}
+
+.event-actions button:hover {
+  background: orange;
+}
+
+/* Print only the single event card the user clicked "Print" on */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .event-card.print-only,
+  .event-card.print-only * {
+    visibility: visible;
+  }
+  .event-card.print-only {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .event-actions {
+    display: none;
+  }
+}
